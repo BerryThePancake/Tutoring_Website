@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --color-tarleton-bg: #FFFFFF;
+  --color-tarleton-text: #1A1625;
+  --color-tarleton-purple: #4F2D7F;
+  --color-tarleton-purple-dark: #3A1E5E;
+  --color-tarleton-purple-muted: #7D66A8;
+  --color-tarleton-purple-light: #F3F0F8;
+  --color-tarleton-border: #E2DFEB;
+  --color-tarleton-grey-light: #F8F7FA;
+  --color-tarleton-grey-alt: #FCFAFF;
+  --color-tarleton-accent: #B0A4C8;
+}
+
+@layer base {
+  body {
+    @apply bg-tarleton-bg text-tarleton-text font-sans antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif font-bold tracking-tight text-tarleton-purple;
+  }
+}
+

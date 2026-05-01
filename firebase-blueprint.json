@@ -1,0 +1,49 @@
+{
+  "entities": {
+    "QuestionSubmission": {
+      "title": "Question Submission",
+      "description": "A question submitted by a student for an SI session.",
+      "type": "object",
+      "properties": {
+        "studentName": { "type": "string", "description": "Optional name of the student" },
+        "topic": { "type": "string", "description": "The chemistry topic" },
+        "question": { "type": "string", "description": "The detailed question" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Timestamp of submission" }
+      },
+      "required": ["topic", "question", "createdAt"]
+    },
+    "AppStats": {
+      "title": "App Stats",
+      "description": "Global application statistics.",
+      "type": "object",
+      "properties": {
+        "visitorCount": { "type": "number", "description": "Total number of page views" }
+      },
+      "required": ["visitorCount"]
+    },
+    "ExamContent": {
+      "title": "Exam Content",
+      "description": "Specialized content for specific exams.",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "topics": { "type": "array", "items": { "type": "string" } },
+        "resources": { "type": "array", "items": { "type": "object" } }
+      }
+    }
+  },
+  "firestore": {
+    "/questions/{questionId}": {
+      "schema": "QuestionSubmission",
+      "description": "Collection of student submitted questions"
+    },
+    "/stats/visitors": {
+      "schema": "AppStats",
+      "description": "Global visitor metrics"
+    },
+    "/exams/{examId}": {
+      "schema": "ExamContent",
+      "description": "Content for individual exams"
+    }
+  }
+}

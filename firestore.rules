@@ -1,0 +1,50 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Default deny
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Helper functions
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    // Question Submission Validation
+    function isValidQuestion(data) {
+      return data.keys().hasAll(['topic', 'question', 'createdAt']) &&
+             data.keys().size() >= 3 && data.keys().size() <= 4 &&
+             data.topic is string && data.topic.size() >= 3 && data.topic.size() <= 100 &&
+             data.question is string && data.question.size() >= 10 && data.question.size() <= 2000 &&
+             data.createdAt == request.time &&
+             (!('studentName' in data) || (data.studentName is string && data.studentName.size() <= 100));
+    }
+
+    // Questions Collection
+    match /questions/{questionId} {
+      allow create: if isValidId(questionId) && isValidQuestion(incoming());
+      allow get: if isSignedIn(); 
+      allow list: if isSignedIn();
+    }
+
+    // App Stats (Visitor Counter)
+    match /stats/visitors {
+      allow read: if true;
+      allow write: if true; 
+    }
+
+    // Exam Content
+    match /exams/{examId} {
+      allow get: if true;
+    }
+  }
+}
