@@ -4,14 +4,16 @@ import { cn } from "@/src/lib/utils";
 import { Link } from "react-router-dom";
 
 const navItems = [
-  { name: "Home", href: "/", icon: Beaker },
-  { name: "Schedule", href: "/#schedule", icon: Calendar },
-  { name: "Resources", href: "/#resources", icon: BookOpen },
-  { name: "Submit Question", href: "/#submit", icon: MessageSquare },
-  { name: "Contact", href: "/#contact", icon: Mail },
+  { name: "Home", hash: "", icon: Beaker },
+  { name: "Schedule", hash: "#schedule", icon: Calendar },
+  { name: "Resources", hash: "#resources", icon: BookOpen },
+  { name: "Submit Question", hash: "#submit", icon: MessageSquare },
+  { name: "Contact", hash: "#contact", icon: Mail },
 ];
 
 export function Navbar() {
+  const basePath = import.meta.env.BASE_URL;
+
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-tarleton-bg/90 backdrop-blur-md border-b border-tarleton-grey-light">
       <div className="max-w-7xl mx-auto px-12 py-8 flex justify-between items-center h-20">
@@ -23,7 +25,7 @@ export function Navbar() {
           {navItems.map((item) => (
             <a
               key={item.name}
-              href={item.href}
+              href={`${basePath}${item.hash}`}
               className="hover:text-tarleton-purple transition-colors"
               id={`nav-${item.name.toLowerCase().replace(/\s+/g, '-')}`}
             >

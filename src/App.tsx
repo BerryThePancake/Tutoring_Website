@@ -4,8 +4,13 @@ import { Home } from "./pages/Home";
 import { ExamPage } from "./pages/ExamPage";
 
 export default function App() {
+  const basename =
+    import.meta.env.BASE_URL === "/"
+      ? undefined
+      : import.meta.env.BASE_URL.replace(/\/$/, "");
+
   return (
-    <Router>
+    <Router basename={basename}>
       <div className="min-h-screen">
         <Navbar />
         <main>
