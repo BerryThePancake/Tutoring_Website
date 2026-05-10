@@ -12,7 +12,10 @@ service cloud.firestore {
     }
 
     function isAdmin() {
-      return isSignedIn() && request.auth.token.email == 'austin.riha@tarleton.edu';
+      return isSignedIn() && request.auth.token.email in [
+        'austin.riha@tarleton.edu',
+        'austin.w.riha@gmail.com'
+      ];
     }
 
     function isValidId(id) {

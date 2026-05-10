@@ -7,20 +7,23 @@ const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app, firebaseConfig.firestoreDatabaseId);
 export const auth = getAuth(app);
 export const googleProvider = new GoogleAuthProvider();
-const adminEmail = 'austin.riha@tarleton.edu';
+const adminEmails = [
+  'austin.riha@tarleton.edu',
+  'austin.w.riha@gmail.com'
+];
 
 export const signInWithGoogle = () => signInWithPopup(auth, googleProvider);
 
 async function ensureAdminUser() {
   const currentEmail = auth.currentUser?.email;
-  if (currentEmail === adminEmail) {
+  if (currentEmail && adminEmails.includes(currentEmail)) {
     return;
   }
 
   const result = await signInWithGoogle();
-  if (result.user.email !== adminEmail) {
+  if (!result.user.email || !adminEmails.includes(result.user.email)) {
     await auth.signOut();
-    throw new Error(`Admin access is restricted to ${adminEmail}.`);
+    throw new Error('Admin access is restricted to approved accounts.');
   }
 }
 
