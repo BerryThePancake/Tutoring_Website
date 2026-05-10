@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import { getAuth, GoogleAuthProvider, signInWithPopup, User, signInAnonymously } from 'firebase/auth';
+import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { getFirestore, serverTimestamp, Timestamp, doc, getDoc, updateDoc, increment, setDoc, getDocs, collection, query, orderBy } from 'firebase/firestore';
 import firebaseConfig from '@/firebase-applet-config.json';
 
@@ -7,8 +7,22 @@ const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app, firebaseConfig.firestoreDatabaseId);
 export const auth = getAuth(app);
 export const googleProvider = new GoogleAuthProvider();
+const adminEmail = 'austin.riha@tarleton.edu';
 
 export const signInWithGoogle = () => signInWithPopup(auth, googleProvider);
+
+async function ensureAdminUser() {
+  const currentEmail = auth.currentUser?.email;
+  if (currentEmail === adminEmail) {
+    return;
+  }
+
+  const result = await signInWithGoogle();
+  if (result.user.email !== adminEmail) {
+    await auth.signOut();
+    throw new Error(`Admin access is restricted to ${adminEmail}.`);
+  }
+}
 
 export async function incrementVisitorCount() {
   try {
@@ -29,6 +43,7 @@ export async function incrementVisitorCount() {
 
 export async function resetVisitorCount() {
   try {
+    await ensureAdminUser();
     const statsRef = doc(db, 'stats', 'visitors');
     await setDoc(statsRef, { visitorCount: 0 });
   } catch (err) {
@@ -39,6 +54,7 @@ export async function resetVisitorCount() {
 
 export async function exportQuestionsToCSV() {
   try {
+    await ensureAdminUser();
     const q = query(collection(db, "questions"), orderBy("createdAt", "desc"));
     const querySnapshot = await getDocs(q);
     
@@ -82,7 +98,8 @@ export async function exportQuestionsToCSV() {
     document.body.removeChild(link);
   } catch (err) {
     console.error('Failed to export questions:', err);
-    alert('Failed to export questions. Check console for details.');
+    const message = err instanceof Error ? err.message : String(err);
+    alert(`Failed to export questions: ${message}`);
   }
 }
 

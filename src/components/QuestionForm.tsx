@@ -5,9 +5,8 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { cn } from "@/src/lib/utils";
-import { db, auth, handleFirestoreError, OperationType, serverTimestamp } from "@/src/lib/firebase";
+import { db, handleFirestoreError, OperationType, serverTimestamp } from "@/src/lib/firebase";
 import { collection, doc, setDoc } from "firebase/firestore";
-import { signInAnonymously } from "firebase/auth";
 
 const formSchema = z.object({
   studentName: z.string().min(2, "Name must be at least 2 characters").optional().or(z.literal("")),

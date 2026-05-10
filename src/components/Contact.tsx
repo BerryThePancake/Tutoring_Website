@@ -13,7 +13,8 @@ export function Contact() {
         await resetVisitorCount();
         alert("Counter reset successfully. Refresh the page to see changes.");
       } catch (err) {
-        alert("Failed to reset counter.");
+        const message = err instanceof Error ? err.message : String(err);
+        alert(`Failed to reset counter: ${message}`);
       }
     }
   };

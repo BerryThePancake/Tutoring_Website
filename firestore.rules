@@ -11,6 +11,10 @@ service cloud.firestore {
       return request.auth != null;
     }
 
+    function isAdmin() {
+      return isSignedIn() && request.auth.token.email == 'austin.riha@tarleton.edu';
+    }
+
     function isValidId(id) {
       return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
     }
@@ -32,14 +36,17 @@ service cloud.firestore {
     // Questions Collection
     match /questions/{questionId} {
       allow create: if isValidId(questionId) && isValidQuestion(incoming());
-      allow get: if isSignedIn(); 
-      allow list: if isSignedIn();
+      allow get: if isAdmin(); 
+      allow list: if isAdmin();
     }
 
     // App Stats (Visitor Counter)
     match /stats/visitors {
       allow read: if true;
-      allow write: if true; 
+      allow create: if true;
+      allow update: if true && request.resource.data.visitorCount == resource.data.visitorCount + 1;
+      allow delete: if false;
+      allow write: if isAdmin();
     }
 
     // Exam Content
