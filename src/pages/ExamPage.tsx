@@ -1,5 +1,5 @@
 // come here to upload files for each exam
-// 
+// they are sorted by exams and make sure to update the categories per exam
 
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";

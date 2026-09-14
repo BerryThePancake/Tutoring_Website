@@ -53,7 +53,6 @@ export function Resources() {
       </div>
 
 
-      // remind section waiting on their decision from SI office
 
       <div className="bg-tarleton-purple-light rounded-[40px] p-10 border border-tarleton-border flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden">
         <div className="relative z-10 text-center md:text-left">
@@ -62,7 +61,7 @@ export function Resources() {
         </div>
         <div className="relative z-10 flex flex-col items-center md:items-end gap-2">
           <div className="text-3xl font-serif italic font-bold tracking-widest bg-white/60 px-8 py-4 rounded-3xl border border-tarleton-border text-tarleton-purple">
-            @9dgced
+            @-----
           </div>
           <p className="text-[10px] text-tarleton-purple-muted uppercase tracking-[0.2em] font-bold">Access Code</p>
         </div>

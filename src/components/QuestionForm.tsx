@@ -123,7 +123,7 @@ export function QuestionForm() {
                 <textarea
                   {...register("question")}
                   rows={4}
-                  placeholder="Explain the problem or paste a link to the textbook problem..."
+                  placeholder="Explain the problem or paste the question here"
                   className={cn(
                     "bg-tarleton-grey-alt border border-tarleton-grey-light rounded-2xl py-4 px-5 text-sm resize-none focus:ring-2 focus:ring-tarleton-purple transition-all outline-none",
                     errors.question && "ring-2 ring-red-200"
