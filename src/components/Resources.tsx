@@ -51,7 +51,10 @@ export function Resources() {
             </motion.div>
         ))}
       </div>
-      
+
+
+      // remind section waiting on their decision from SI office
+
       <div className="bg-tarleton-purple-light rounded-[40px] p-10 border border-tarleton-border flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden">
         <div className="relative z-10 text-center md:text-left">
           <h3 className="font-serif text-3xl text-tarleton-purple mb-2">Stay Connected</h3>
@@ -66,6 +69,9 @@ export function Resources() {
         {/* Abstract Background Elements */}
         <div className="absolute top-0 right-0 -mr-16 -mt-16 w-48 h-48 bg-white/20 rounded-full blur-2xl" />
       </div>
+
+
+      
     </section>
   );
 }

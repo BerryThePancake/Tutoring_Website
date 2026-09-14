@@ -1,3 +1,5 @@
+/* visitor counter, make sure to reset it every once in a while, maybe every month or so */
+
 import { useEffect, useState } from "react";
 import { db, incrementVisitorCount } from "@/src/lib/firebase";
 import { doc, onSnapshot } from "firebase/firestore";

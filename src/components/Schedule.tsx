@@ -1,19 +1,23 @@
+/* This is where I update my schedule and dates and times */
+
 import { motion } from "motion/react";
 import { Calendar, MapPin, Clock, Users } from "lucide-react";
 import { cn } from "@/src/lib/utils";
 
+
+/* change the times here */
 const sessions = [
   {
-    day: "Tuesday",
-    time: "6:00 PM - 7:00 PM",
-    location: "Math 305",
+    day: "Monday",
+    time: "8:00 PM - 9:00 PM",
+    location: "Math 135",
     type: "Review & Practice",
   },
   {
     day: "Thursday",
-    time: "6:00 PM - 7:00 PM",
-    location: "Math 305",
-    type: "Exam Prep & Questions",
+    time: "8:00 PM - 9:00 PM",
+    location: "Math 135",
+    type: "Review & Practice",
   },
 ];
 
@@ -28,7 +32,7 @@ export function Schedule() {
           </div>
           <div className="bg-white/50 px-4 py-2 rounded-full border border-tarleton-purple-light flex items-center gap-2">
             <Users className="w-4 h-4 text-tarleton-purple-muted" />
-            <span className="text-xs font-bold text-tarleton-purple-muted uppercase tracking-widest">SI Program</span>
+            <span className="text-xs font-bold text-tarleton-purple-muted uppercase tracking-widest">Austin Riha</span>
           </div>
         </div>
 

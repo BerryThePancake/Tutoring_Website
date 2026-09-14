@@ -8,7 +8,7 @@ export const db = getFirestore(app, firebaseConfig.firestoreDatabaseId);
 export const auth = getAuth(app);
 export const googleProvider = new GoogleAuthProvider();
 const adminEmails = [
-  'austin.riha@tarleton.edu',
+  'austin.riha@go.tarleton.edu',
   'austin.w.riha@gmail.com'
 ];
 
