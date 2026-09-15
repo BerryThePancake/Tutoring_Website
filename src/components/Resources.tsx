@@ -57,11 +57,11 @@ export function Resources() {
       <div className="bg-tarleton-purple-light rounded-[40px] p-10 border border-tarleton-border flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden">
         <div className="relative z-10 text-center md:text-left">
           <h3 className="font-serif text-3xl text-tarleton-purple mb-2">Stay Connected</h3>
-          <p className="text-tarleton-purple-muted text-sm">Join the Remind group for instant notifications and direct message support.</p>
+          <p className="text-tarleton-purple-muted text-sm">Join the GroupMe for instant notifications and updates.</p>
         </div>
         <div className="relative z-10 flex flex-col items-center md:items-end gap-2">
           <div className="text-3xl font-serif italic font-bold tracking-widest bg-white/60 px-8 py-4 rounded-3xl border border-tarleton-border text-tarleton-purple">
-            @-----
+            https://groupme.com/join_group/117522926/CYaem7dt
           </div>
           <p className="text-[10px] text-tarleton-purple-muted uppercase tracking-[0.2em] font-bold">Access Code</p>
         </div>

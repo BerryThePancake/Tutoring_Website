@@ -27,8 +27,8 @@ export function Contact() {
             Austin&apos;s Study Hub
           </div>
           <div className="space-y-1">
-            <span className="flex items-center gap-2">• austin.riha@tarleton.edu</span>
-            <span className="flex items-center gap-2">• SI Sessions: Tues/Thurs 6-7PM</span>
+            <span className="flex items-center gap-2">• austin.riha@go.tarleton.edu</span>
+            <span className="flex items-center gap-2">• SI Sessions: Mon/Thurs 8-9PM Math 135</span>
           </div>
         </div>
 
@@ -45,7 +45,7 @@ export function Contact() {
         </div>
       </div>
       
-      <div className="container mx-auto mt-12 pt-8 border-t border-tarleton-purple-light/30 relative">
+      <div className="container mx-auto mt-12 pt-12 border-t border-tarleton-purple-light/30 relative">
         <div className="bg-tarleton-purple-light/40 p-6 rounded-2xl border border-tarleton-border italic text-[11px] text-tarleton-purple-muted leading-relaxed max-w-4xl mx-auto text-center">
           <span className="font-bold text-tarleton-purple not-italic uppercase tracking-widest text-[9px] mb-1 block">Title IX Disclosure</span>
           "I am REQUIRED by law under Title IX to report any instances that compromise a student's well-being, so please be aware of what you share with me."
